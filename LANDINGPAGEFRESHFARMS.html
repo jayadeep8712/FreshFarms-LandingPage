@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="fflogo.jpeg" type="image/icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>FF-Basket</title>
+    <style>
+        /*default*/
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            background-color: #ffd800;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow-y: scroll;
+
+        }
+
+        .subcontainer {
+            background-color: white;
+            background: url(Subbg1.png);
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 0.61);
+            width: 85%;
+            margin-bottom: 5px;
+            border-radius: 16px;
+            position: fixed;
+            padding: 300px 5px;
+            position: fixed;
+            padding: 300px 5px;
+            cursor: default; /*remove*/
+        }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            /*width: calc(100% - 20px);*/
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding: 10px;
+        }
+
+        .logo {
+            font-family: system-ui;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            margin-left: 40px;
+        }
+
+        .logo b {
+            margin: 0;
+        }
+
+        .pages {
+            display: flex;
+            align-items: center;
+            font-size: 100%;
+        }
+
+        .pages.nav {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .pages nav a {
+            text-decoration: none;
+            font-family: system-ui;
+            font-size: 95%;
+            font-weight: 110px;
+            color: rgb(231, 18, 18);
+            margin-left: 50px;
+            padding: 5px;
+            position: relative;
+        }
+
+        .pages nav a:hover {
+            /*text-decoration: underline;*/
+            color: #ff9900;
+            border-bottom: 3px solid #ff9900;
+        }
+
+        .pages nav a:hover:nth-child(2) {
+            color: green;
+            border-bottom: 3px solid green;
+        }
+
+        .pages nav a:hover:nth-child(4) {
+            color: green;
+            border-bottom: 3px solid green;
+        }
+
+        .pages nav a:hover:nth-child(6) {
+            color: green;
+            border-bottom: 3px solid green;
+        }
+
+        .emoji a {
+            border-radius: 33px;
+            box-shadow: 0 0 6px 6px #ffd800;
+            text-decoration: none;
+            margin-left: 400%;
+            padding: 5%;
+
+        }
+
+        .emoji {
+            font-size: 22px;
+        }
+
+
+        /* Cursor styles */
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        .cursor {
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: background-color 0.2s;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-img {
+            width: 50px;
+            height: 40px;
+        }
+
+        .fruit {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-size: cover;
+            transform-origin: center center;
+            z-index: 9998;
+            pointer-events: none;
+            animation: sprinkle 3s linear infinite;
+        }
+
+        .apple {
+            background-image: url('apple.png');
+        }
+
+        .orange {
+            background-image: url('orange.png');
+        }
+
+        .lemon {
+            background-image: url('pineapple.png');
+        }
+
+        .grape {
+            background-image: url('grape.png');
+        }
+
+        .banana {
+            background-image: url('banana.png');
+        }
+
+        .watermelon {
+            background-image: url('watermelon.png');
+        }
+
+        .mango {
+            background-image: url('mango.png');
+        }
+
+        .kiwi {
+            background-image: url('kiwi.png');
+        }
+
+        .guava {
+            background-image: url('guava.png');
+        }
+
+        @keyframes sprinkle {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1.5);
+                opacity: 2;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg) scale(0.3);
+                opacity: 1;
+            }
+        }
+
+        /*container2 style*/
+        .container2 {
+            position: fixed;
+            padding: 10px 70px;
+            position: absolute;
+            align-items: center;
+            margin-top: 80%;
+            bottom: 0;
+            left: 10;
+            transform: translateY(-18%);
+            display: flex;
+            flex-direction: row;
+        }
+
+        content {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 10px red;
+            }
+
+            50% {
+                box-shadow: 0 0 10px red, 0 0 10px red;
+            }
+
+            100% {
+                box-shadow: 0 0 10px red;
+            }
+        }
+
+        .glowing-button {
+            border: outset transparent;
+            animation: glow 2s infinite;
+            transition: transform 0.1s;
+        }
+
+        .glowing-button:hover {
+            transform: scale(1);
+        }
+
+        img {
+            padding-left: 60%;
+            transform: translateX(-20%);
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor">
+        <img src="basket.png" sizes="25px" alt="Basket Cursor" class="cursor-img">
+    </div>
+
+    <div class="fruit apple"></div>
+    <div class="fruit orange"></div>
+    <div class="fruit pineapple"></div>
+    <div class="fruit grape"></div>
+    <div class="fruit banana"></div>
+    <div class="fruit watermelon"></div>
+    <div class="fruit mango"></div>
+    <div class="fruit kiwi"></div>
+    <div class="fruit guava"></div>
+
+    <!--Main-->
+    <div class="container">
+
+        <div class="subcontainer">
+            <div class="navbar">
+                <div class="logo">
+                    <font size="5px;"><b style="color:red">FRESH</b>&nbsp;<b style="color:#ffd800;">FARMS &#x1F343;</b>
+                    </font>
+                </div>
+                <div class="pages">
+                    <nav>
+                        <a href="FFLandingPage.html">Home</a>
+                        <a href="">Product</a>
+                        <a href="">About Us</a>
+                        <a href="">Shop</a>
+                        <a href="">Contact</a>
+                        <a><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    </nav>
+                </div>
+                <div class="emoji"><a href="">🌱</a></div>
+            </div>
+
+
+            <div class="container2">
+                <!--landing Content-->
+
+                <div class="content">
+                    <p style="font-family: system-ui,Roboto;">
+                        <font size="6px;"><b>Discover Healthy<br>Fresh </b><b style="color: #ffd800;">Fruits!</b></font>
+                    <p style="font-family: system-ui,Roboto; font-size: 20px; font-weight: 35vw;"><b>Order Now For Fresh
+                            Healthy Life</b>
+                    <p>
+                    <p style="font-family:system-ui,Roboto; font-size: 14px;">Revitalize Your Mornings with Fresh,
+                        Nutritious Breakfasts! Elevate Your <br>Health and Mind. Order Now for a Wholesome Start and Get
+                        30% Off Your <br>first Order!
+                    </p><br>
+
+                    <button class="fa fa-shopping-basket glowing-button" aria-hidden="true"
+                        style="border-radius: 8px; border:transparent; background-color: red; color:white; padding: 7px; font-size: 15px;">
+                        Order
+                        Now</button>
+                    </p>
+                </div>
+
+
+                <div class="img">
+                    <img src="sbg1.png" alt="freshfruits">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JS for fruit cursor animation -->
+    <script>
+        const cursor = document.querySelector('.cursor');
+        const fruits = document.querySelectorAll('.fruit');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        fruits.forEach((fruit) => {
+
+            fruit.style.left = Math.random() * window.innerWidth + 'px';
+            fruit.style.animationDelay = Math.random() * 2 + 's';
+        });
+    </script>
+</body>
+
+</html>
